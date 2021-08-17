@@ -1,4 +1,4 @@
-package ru.test.models;
+package ru.project.models;
 
 public class Person {
 

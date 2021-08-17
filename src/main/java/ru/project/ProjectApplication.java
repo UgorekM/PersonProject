@@ -1,8 +1,8 @@
-package ru.test;
+package ru.project;
 
-import ru.test.dao.PersonDao;
+import ru.project.dao.PersonDao;
 
-public class TestApplication {
+public class ProjectApplication {
 
 	public static void main(String[] args) {
 		PersonDao personDao = new PersonDao();

@@ -1,4 +1,4 @@
-package ru.test.repositories;
+package ru.project.repositories;
 
 public interface AbstractDao <K, E> {
 

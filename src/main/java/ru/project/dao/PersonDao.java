@@ -1,7 +1,7 @@
-package ru.test.dao;
+package ru.project.dao;
 
-import ru.test.models.Person;
-import ru.test.repositories.AbstractDao;
+import ru.project.models.Person;
+import ru.project.repositories.AbstractDao;
 
 import javax.transaction.Transactional;
 import java.sql.*;

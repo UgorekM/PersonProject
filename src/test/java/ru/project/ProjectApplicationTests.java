@@ -1,10 +1,10 @@
-package ru.test;
+package ru.project;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import ru.test.dao.PersonDao;
-import ru.test.models.Person;
+import ru.project.dao.PersonDao;
+import ru.project.models.Person;
 
 import java.sql.*;
 import java.util.ResourceBundle;
@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class TestApplicationTests {
+class ProjectApplicationTests {
 
 	static Connection connection;
 
