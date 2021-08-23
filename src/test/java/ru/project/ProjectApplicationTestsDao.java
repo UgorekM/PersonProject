@@ -10,9 +10,8 @@ import java.sql.*;
 import java.util.ResourceBundle;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class ProjectApplicationTests {
+class ProjectApplicationTestsDao {
 
 	static Connection connection;
 
@@ -41,21 +40,24 @@ class ProjectApplicationTests {
 		PersonDao personDao = new PersonDao(connection);
 		personDao.changeSurname(1, "Petrov");
 		Person p = personDao.getById(1);
-		assertTrue(p.toString().equals("Person {id=1, firstname='I', surname='Petrov'}"));
+		Person pTrue = new Person(1,"I", "Petrov");
+		assertEquals(p, pTrue);
 	}
 
 	@Test
 	void testGetByFirstmane() {
 		PersonDao personDao = new PersonDao(connection);
 		Person p = personDao.getByFirstname("I");
-		assertTrue(p.toString().equals("Person {id=1, firstname='I', surname='M'}"));
+		Person pTrue = new Person(1,"I", "M");
+		assertEquals(p, pTrue);
 	}
 
 	@Test
 	void testGetById() {
 		PersonDao personDao = new PersonDao(connection);
-		Person p = personDao.getById(1);
-		assertEquals("Person {id=1, firstname='I', surname='M'}", p.toString());
+		Person p = personDao.getByFirstname("I");
+		Person pTrue = new Person(1,"I", "M");
+		assertEquals(p, pTrue);
 	}
 
 	@AfterAll

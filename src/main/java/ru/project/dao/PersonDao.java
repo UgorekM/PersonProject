@@ -1,5 +1,7 @@
 package ru.project.dao;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.project.models.Person;
 import ru.project.repositories.AbstractDao;
 
@@ -8,6 +10,8 @@ import java.sql.*;
 
 @Transactional
 public class PersonDao implements AbstractDao<Integer, Person> {
+
+    final static Logger logger = LoggerFactory.getLogger(PersonDao.class);
 
     Connection connection;
 
@@ -35,7 +39,7 @@ public class PersonDao implements AbstractDao<Integer, Person> {
                 person = new Person(id, name, surname);
             }
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            logger.error(e.getMessage());
         } finally {
             try {
                 connection.close();
@@ -58,12 +62,12 @@ public class PersonDao implements AbstractDao<Integer, Person> {
             statement.setString(1, firstname);
             ResultSet rs = statement.executeQuery();
             if (rs.next()) {
-                Integer id = rs.getInt(1);
+                int id = rs.getInt(1);
                 String surname = rs.getString(3);
                 person = new Person(id, firstname, surname);
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
         return person;
     }
@@ -80,7 +84,7 @@ public class PersonDao implements AbstractDao<Integer, Person> {
             statement.setInt(2, id);
             statement.executeUpdate();
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            logger.error(e.getMessage());
         }
     }
 }

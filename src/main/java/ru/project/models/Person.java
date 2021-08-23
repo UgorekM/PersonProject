@@ -1,12 +1,14 @@
 package ru.project.models;
 
+import java.util.Objects;
+
 public class Person {
 
-    private int id;
+    private final int id;
 
-    private String firstname;
+    private final String firstname;
 
-    private String surname;
+    private final String surname;
 
     public Person(int id, String firstname, String surname) {
         this.id = id;
@@ -14,16 +16,19 @@ public class Person {
         this.surname = surname;
     }
 
-    public int getId() {
-        return id;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return id == person.id &&
+                Objects.equals(firstname, person.firstname) &&
+                Objects.equals(surname, person.surname);
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public String getSurname() {
-        return surname;
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstname, surname);
     }
 
     @Override
